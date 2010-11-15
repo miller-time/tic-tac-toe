@@ -11,8 +11,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        tictactoe.cpp
+        tictactoe.cpp \
+    gamesquare.cpp
 
-HEADERS  += tictactoe.h
-
-FORMS    += tictactoe.ui
+HEADERS  += tictactoe.h \
+    gamesquare.h

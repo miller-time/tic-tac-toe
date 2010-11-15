@@ -1,14 +1,15 @@
-#include "tictactoe.h"
-#include "ui_tictactoe.h"
+#include <QtGui>
 
-TicTacToe::TicTacToe(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::TicTacToe)
+#include "tictactoe.h"
+#include "gamesquare.h"
+
+TicTacToe::TicTacToe()
 {
-    ui->setupUi(this);
+
+
 }
 
-TicTacToe::~TicTacToe()
+void TicTacToe::start()
 {
-    delete ui;
+
 }
