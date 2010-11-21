@@ -12,7 +12,9 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         tictactoe.cpp \
-    gamesquare.cpp
+    gamesquare.cpp \
+    gamegrid.cpp
 
 HEADERS  += tictactoe.h \
-    gamesquare.h
+    gamesquare.h \
+    gamegrid.h

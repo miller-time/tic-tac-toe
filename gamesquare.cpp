@@ -5,7 +5,7 @@
 #include <QPixmap>
 #include "gamesquare.h"
 
-GameSquare::GameSquare()
+GameSquare::GameSquare(char token) : current_letter(token)
 {
 }
 
@@ -16,9 +16,13 @@ QRectF GameSquare::boundingRect() const
 
 void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
-    QString xFile = "images/x.png";
-    QPixmap xPiece(xFile, 0, Qt::AutoColor);
-    painter->drawPixmap(0,0,xPiece);
+    QString fileName;
+    if (current_letter == 'X')
+        fileName = "images/x.png";
+    else
+        fileName = "images/o.png";
+    QPixmap token(fileName, 0, Qt::AutoColor);
+    painter->drawPixmap(0,0,token);
 }
 
 QPainterPath GameSquare::shape () const

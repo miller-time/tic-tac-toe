@@ -1,13 +1,13 @@
-#ifndef GAMESQUARE_H
-#define GAMESQUARE_H
+#ifndef GAMEGRID_H
+#define GAMEGRID_H
 
 #include <QGraphicsItem>
 
-class GameSquare
+class GameGrid
     : public QGraphicsItem
 {
 public:
-    GameSquare(char);
+    GameGrid();
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
@@ -15,8 +15,6 @@ public:
                const QStyleOptionGraphicsItem *,
                QWidget *);
 
-private:
-    char current_letter;
 };
 
-#endif // GAMESQUARE_H
+#endif // GAMEGRID_H
