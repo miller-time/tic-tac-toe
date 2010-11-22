@@ -17,7 +17,9 @@ QRectF GameSquare::boundingRect() const
 void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     QString fileName;
-    if (current_letter == 'X')
+    if (current_letter == ' ')
+        return;
+    else if (current_letter == 'X')
         fileName = "images/x.png";
     else
         fileName = "images/o.png";
