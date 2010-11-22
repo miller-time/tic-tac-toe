@@ -1,14 +1,20 @@
-#ifndef TICTACTOE_H
-#define TICTACTOE_H
+#ifndef TICTACCONTROLLER_H
+#define TICTACCONTROLLER_H
 
+#include <QGraphicsScene>
+#include "gamesquare.h"
+#include "gamegrid.h"
 
-class TicTacToe
+class TicTacController
 {
 
 public:
-    TicTacToe();
-
-    void start();
+    TicTacController();
+    GameSquare *addToken(char, int);
+    QGraphicsScene * getScene();
+private:
+    GameGrid *grid;
+    QGraphicsScene scene;
 
 };
 
