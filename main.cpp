@@ -68,46 +68,8 @@ int main(int argc, char *argv[])
     int i;
     for(i = 1; i < 10; i++)
     {
-        scene.addItem(addToken('X', i));
+        scene.addItem(addToken('O', i));
     }
-/*
-    // Make the 9 Tic Tac Toe squares, add them to scene
-    GameSquare *square_1 = new GameSquare;
-    square_1->setPos(0,0);
-    scene.addItem(square_1);
-
-    GameSquare *square_2 = new GameSquare;
-    square_2->setPos(100,0);
-    scene.addItem(square_2);
-
-    GameSquare *square_3 = new GameSquare;
-    square_3->setPos(200,0);
-    scene.addItem(square_3);
-
-    GameSquare *square_4 = new GameSquare;
-    square_4->setPos(0,100);
-    scene.addItem(square_4);
-
-    GameSquare *square_5 = new GameSquare;
-    square_5->setPos(100,100);
-    scene.addItem(square_5);
-
-    GameSquare *square_6 = new GameSquare;
-    square_6->setPos(200,100);
-    scene.addItem(square_6);
-
-    GameSquare *square_7 = new GameSquare;
-    square_7->setPos(0,200);
-    scene.addItem(square_7);
-
-    GameSquare *square_8 = new GameSquare;
-    square_8->setPos(100,200);
-    scene.addItem(square_8);
-
-    GameSquare *square_9 = new GameSquare;
-    square_9->setPos(200,200);
-    scene.addItem(square_9);
-*/
 
     GameGrid *grid = new GameGrid;
     grid->setPos(0,0);

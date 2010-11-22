@@ -11,7 +11,7 @@ GameSquare::GameSquare(char token) : current_letter(token)
 
 QRectF GameSquare::boundingRect() const
 {
-    return QRectF(-50,-50,50,50);
+    return QRectF(0,0,100,100);
 }
 
 void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
@@ -28,6 +28,21 @@ void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWid
 QPainterPath GameSquare::shape () const
 {
     QPainterPath path;
-    path.addRect(-50,-50,50,50);
+    path.addRect(0,0,100,100);
     return path;
+}
+
+void GameSquare::changeToken()
+{
+    if (current_letter == 'X')
+        current_letter = 'O';
+    else
+        current_letter = 'X';
+}
+
+void GameSquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    this->changeToken();
+    QRect target(0,0,100,100);
+    update(target);
 }

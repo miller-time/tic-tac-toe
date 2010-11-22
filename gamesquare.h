@@ -14,6 +14,8 @@ public:
     void paint(QPainter *painter,
                const QStyleOptionGraphicsItem *,
                QWidget *);
+    void changeToken();
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
 private:
     char current_letter;
