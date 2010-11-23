@@ -16,6 +16,8 @@ public:
     QGraphicsScene * getScene();
 public slots:
     void onTokenChange(GameSquare *);
+    void exitProgram();
+    void onSelectChange(char);
 private:
     GameGrid *grid;
     QGraphicsScene scene;

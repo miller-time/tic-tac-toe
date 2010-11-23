@@ -30,9 +30,11 @@ TicTacController::TicTacController(QWidget *parent)
     UiItem *selectX = new UiItem('x', &engine);
     selectX->setPos(300,0);
     scene.addItem(selectX);
+    connect(selectX, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
     UiItem *selectO = new UiItem('o', &engine);
     selectO->setPos(400,0);
     scene.addItem(selectO);
+    connect(selectO, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
 
     // turn indicator
     UiItem *arrow = new UiItem('a', &engine);
@@ -46,10 +48,13 @@ TicTacController::TicTacController(QWidget *parent)
     UiItem *quit = new UiItem('q', &engine);
     quit->setPos(400,210);
     scene.addItem(quit);
+    connect(quit, SIGNAL(clicked()), this, SLOT(exitProgram()));
 }
 
 void TicTacController::restart()
 {
+    current_selection = ' ';
+
     scene.clear();
     int i;
     for(i = 1; i < 10; i++)
@@ -64,9 +69,11 @@ void TicTacController::restart()
     UiItem *selectX = new UiItem('x', &engine);
     selectX->setPos(300,0);
     scene.addItem(selectX);
+    connect(selectX, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
     UiItem *selectO = new UiItem('o', &engine);
     selectO->setPos(400,0);
     scene.addItem(selectO);
+    connect(selectO, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
 
     // turn indicator
     UiItem *arrow = new UiItem('a', &engine);
@@ -80,6 +87,7 @@ void TicTacController::restart()
     UiItem *quit = new UiItem('q', &engine);
     quit->setPos(400,210);
     scene.addItem(quit);
+    connect(quit, SIGNAL(clicked()), this, SLOT(exitProgram()));
 }
 
 QGraphicsScene * TicTacController::getScene()
@@ -100,6 +108,16 @@ void TicTacController::onTokenChange(GameSquare *square)
         for (i = 1; i < 10; i++)
             engine.update('-', i);
     }
+}
+
+void TicTacController::onSelectChange(char toWhat)
+{
+    engine.changeSelect(toWhat);
+}
+
+void TicTacController::exitProgram()
+{
+    exit(0);
 }
 
 GameSquare * TicTacController::addToken(char token, int location)

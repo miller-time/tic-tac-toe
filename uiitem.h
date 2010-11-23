@@ -19,8 +19,9 @@ public:
                const QStyleOptionGraphicsItem *,
                QWidget *);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
-//signals:
-//    void changedPic(GameSquare *);
+signals:
+    void clicked();
+    void selectChanged(char);
 private:
     char id;
     int xSize;

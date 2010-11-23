@@ -22,14 +22,10 @@ void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWid
     if (current_letter == 'X')
     {
         fileName = "images/x.png";
-        engine->changeTurn();
-        engine->changeSelect(' ');
     }
     else  if (current_letter == 'O')
     {
         fileName = "images/o.png";
-        engine->changeTurn();
-        engine->changeSelect(' ');
     }
     else
         return;
@@ -46,7 +42,12 @@ QPainterPath GameSquare::shape () const
 
 void GameSquare::changeToken()
 {
-    current_letter = engine->whatIsSelected();
+    if (current_letter == ' ')
+    {
+        current_letter = engine->whatIsSelected();
+        engine->changeTurn();
+        engine->changeSelect(' ');
+    }
 }
 
 char GameSquare::getToken()

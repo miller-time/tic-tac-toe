@@ -27,6 +27,7 @@ void GameEngine::changeSelect(char toWhat)
 
 bool GameEngine::isOver()
 {
+    // count squares
     int tokenvalues[9];
     int i;
     for (i = 0; i < 10; i++)
@@ -44,6 +45,7 @@ bool GameEngine::isOver()
                 break;
         }
     }
+    // get values for each row, column, diagonal
     int rowvalues[8];
     //top row
     rowvalues[0] = tokenvalues[0] +
@@ -79,12 +81,23 @@ bool GameEngine::isOver()
                    tokenvalues[6];
 
     bool returnval = false;
-    for (i = 0; i < 9; i++)
+    // check for 3 in a row
+    for (i = 0; i < 8; i++)
     {
         if ((rowvalues[i] == -3) ||
             (rowvalues[i] == 3))
             returnval = true;
     }
+    // check if board full
+    bool full = true;
+    for (i = 0; i < 9; i++)
+    {
+        if (tokenvalues[i] == 0)
+            full = false;
+    }
+    // if there was no winner check if board was full
+    if (!returnval)
+        returnval = full; // if this is true, it was tie
     return returnval;
 }
 

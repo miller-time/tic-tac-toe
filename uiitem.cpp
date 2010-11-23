@@ -53,6 +53,7 @@ void UiItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
         imageFile = "images/grey-x.png";
     if ((id == 'o') && (engine->whatIsSelected() == ' '))
         imageFile = "images/grey-o.png";
+    // check whose turn it is
     if (id == 'w')
     {
         if (engine->whoseTurnIsIt() == 'X')
@@ -80,15 +81,23 @@ void UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
     {
         // clicked on select X
         imageFile == "images/x.png";
-        engine->changeSelect('X');
+        QRect target(0,0,xSize,ySize);
+        update(target);
+        emit selectChanged('X');
+        //engine->changeSelect('X');
     }
     else if (id == 'o')
     {
         // clicked on select O
         imageFile == "images/o.png";
-        engine->changeSelect('O');
+        QRect target(0,0,xSize,ySize);
+        update(target);
+        emit selectChanged('O');
+        //engine->changeSelect('O');
     }
-    QRect target(0,0,xSize,ySize);
-    update(target);
+    else if (id == 'q')
+    {
+        emit clicked();
+    }
     //emit tokenChange(this);
 }
