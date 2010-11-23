@@ -18,6 +18,8 @@ public slots:
     void onTokenChange(GameSquare *);
     void exitProgram();
     void onSelectChange(char);
+signals:
+    void updateUI();
 private:
     GameGrid *grid;
     QGraphicsScene scene;

@@ -19,6 +19,8 @@ public:
                const QStyleOptionGraphicsItem *,
                QWidget *);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
+public slots:
+    void needToUpdate();
 signals:
     void clicked();
     void selectChanged(char);

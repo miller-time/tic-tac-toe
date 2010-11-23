@@ -45,8 +45,6 @@ void GameSquare::changeToken()
     if (current_letter == ' ')
     {
         current_letter = engine->whatIsSelected();
-        engine->changeTurn();
-        engine->changeSelect(' ');
     }
 }
 

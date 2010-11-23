@@ -110,3 +110,12 @@ void GameEngine::update(char t, int l)
 {
     tokens[l - 1] = t;
 }
+
+void GameEngine::reset()
+{
+    int i;
+    for(i = 0; i < 10; i++)
+        tokens[i] = '-';
+    whoseTurn = 'X';
+    selected = ' ';
+}

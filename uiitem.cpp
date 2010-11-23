@@ -86,7 +86,6 @@ void UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
         imageFile = "images/x.png";
         QRect target(0,0,xSize,ySize);
         update(target);
-        //engine->changeSelect('X');
     }
     else if (id == 'o')
     {
@@ -95,11 +94,16 @@ void UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
         imageFile = "images/o.png";
         QRect target(0,0,xSize,ySize);
         update(target);
-        //engine->changeSelect('O');
     }
     else if (id == 'q')
     {
         emit clicked();
     }
-    //emit tokenChange(this);
+}
+
+void UiItem::needToUpdate()
+{
+    //qDebug() << "Got the 'need to update' signal!";
+    QRect target(0,0,xSize,ySize);
+    update(target);
 }

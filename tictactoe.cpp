@@ -31,10 +31,12 @@ TicTacController::TicTacController(QWidget *parent)
     selectX->setPos(300,0);
     scene.addItem(selectX);
     connect(selectX, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
+    connect(this, SIGNAL(updateUI()), selectX, SLOT(needToUpdate()));
     UiItem *selectO = new UiItem('o', &engine);
     selectO->setPos(400,0);
     scene.addItem(selectO);
     connect(selectO, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
+    connect(this, SIGNAL(updateUI()), selectO, SLOT(needToUpdate()));
 
     // turn indicator
     UiItem *arrow = new UiItem('a', &engine);
@@ -55,6 +57,7 @@ void TicTacController::restart()
 {
     current_selection = ' ';
 
+    engine.reset();
     scene.clear();
     int i;
     for(i = 1; i < 10; i++)
@@ -70,10 +73,12 @@ void TicTacController::restart()
     selectX->setPos(300,0);
     scene.addItem(selectX);
     connect(selectX, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
+    connect(this, SIGNAL(updateUI()), selectX, SLOT(needToUpdate()));
     UiItem *selectO = new UiItem('o', &engine);
     selectO->setPos(400,0);
     scene.addItem(selectO);
     connect(selectO, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
+    connect(this, SIGNAL(updateUI()), selectO, SLOT(needToUpdate()));
 
     // turn indicator
     UiItem *arrow = new UiItem('a', &engine);
@@ -100,6 +105,9 @@ void TicTacController::onTokenChange(GameSquare *square)
     char token = square->getToken();
     int location = square->getLoc();
     engine.update(token, location);
+    engine.changeSelect(' ');
+    engine.changeTurn();
+    emit updateUI();
     if (engine.isOver())
     {
         QMessageBox::information(this, tr("Game Over"), tr("Game Over"));

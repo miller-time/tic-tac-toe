@@ -11,6 +11,7 @@ public:
     void update(char, int);
     char whatIsSelected();
     void changeSelect(char);
+    void reset();
 private:
     char whoseTurn;
     char selected;
