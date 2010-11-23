@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-TARGET = TicTacToe
+TARGET = tictactoe
 TEMPLATE = app
 
 

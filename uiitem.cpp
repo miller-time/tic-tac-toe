@@ -1,5 +1,7 @@
 #include "uiitem.h"
 
+#include <QDebug>
+
 UiItem::UiItem(char identifier, GameEngine *eng) : id (identifier), engine (eng)
 {
     switch(identifier)
@@ -80,19 +82,19 @@ void UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if (id == 'x')
     {
         // clicked on select X
-        imageFile == "images/x.png";
+        emit selectChanged('X');
+        imageFile = "images/x.png";
         QRect target(0,0,xSize,ySize);
         update(target);
-        emit selectChanged('X');
         //engine->changeSelect('X');
     }
     else if (id == 'o')
     {
         // clicked on select O
-        imageFile == "images/o.png";
+        emit selectChanged('O');
+        imageFile = "images/o.png";
         QRect target(0,0,xSize,ySize);
         update(target);
-        emit selectChanged('O');
         //engine->changeSelect('O');
     }
     else if (id == 'q')
