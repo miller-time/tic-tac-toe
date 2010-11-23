@@ -11,6 +11,7 @@ class TicTacController : public QWidget
     Q_OBJECT
 public:
     TicTacController(QWidget *parent = 0);
+    void restart();
     GameSquare *addToken(char, int);
     QGraphicsScene * getScene();
 public slots:

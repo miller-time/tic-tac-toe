@@ -25,6 +25,19 @@ TicTacController::TicTacController(QWidget *parent)
 
 }
 
+void TicTacController::restart()
+{
+    scene.clear();
+    int i;
+    for(i = 1; i < 10; i++)
+    {
+        scene.addItem(addToken(' ', i));
+    }
+    GameGrid *grid = new GameGrid;
+    grid->setPos(0,0);
+    scene.addItem(grid);
+}
+
 QGraphicsScene * TicTacController::getScene()
 {
     return &scene;
@@ -36,7 +49,13 @@ void TicTacController::onTokenChange(GameSquare *square)
     int location = square->getLoc();
     engine.update(token, location);
     if (engine.isOver())
+    {
         QMessageBox::information(this, tr("Game Over"), tr("Game Over"));
+        restart();
+        int i;
+        for (i = 1; i < 10; i++)
+            engine.update('-', i);
+    }
 }
 
 GameSquare * TicTacController::addToken(char token, int location)
