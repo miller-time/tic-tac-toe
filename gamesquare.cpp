@@ -4,9 +4,10 @@
 #include <QString>
 #include <QPixmap>
 #include "gamesquare.h"
+#include "gameengine.h"
 
-GameSquare::GameSquare(char token, int loc)
-    : current_letter(token), location(loc)
+GameSquare::GameSquare(char token, int loc, GameEngine *eng)
+    : current_letter(token), location(loc), engine(eng)
 {
 }
 
@@ -18,12 +19,20 @@ QRectF GameSquare::boundingRect() const
 void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     QString fileName;
-    if (current_letter == ' ')
-        return;
-    else if (current_letter == 'X')
+    if (current_letter == 'X')
+    {
         fileName = "images/x.png";
-    else
+        engine->changeTurn();
+        engine->changeSelect(' ');
+    }
+    else  if (current_letter == 'O')
+    {
         fileName = "images/o.png";
+        engine->changeTurn();
+        engine->changeSelect(' ');
+    }
+    else
+        return;
     QPixmap token(fileName, 0, Qt::AutoColor);
     painter->drawPixmap(0,0,token);
 }
@@ -37,10 +46,7 @@ QPainterPath GameSquare::shape () const
 
 void GameSquare::changeToken()
 {
-    if (current_letter == 'X')
-        current_letter = 'O';
-    else
-        current_letter = 'X';
+    current_letter = engine->whatIsSelected();
 }
 
 char GameSquare::getToken()
@@ -57,7 +63,7 @@ void GameSquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (!event)
         return;
-    this->changeToken();
+    changeToken();
     QRect target(0,0,100,100);
     update(target);
     emit tokenChange(this);

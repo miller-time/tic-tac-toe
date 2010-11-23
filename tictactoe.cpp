@@ -3,12 +3,15 @@
 #include "tictactoe.h"
 #include "gamesquare.h"
 #include "gamegrid.h"
+#include "uiitem.h"
 
 TicTacController::TicTacController(QWidget *parent)
     : QWidget (parent)
 {
+    current_selection = ' ';
+
     // initialize the scene
-    scene.setSceneRect(0,0,300,300);
+    scene.setSceneRect(0,0,500,300);
     scene.setItemIndexMethod(QGraphicsScene::NoIndex);
 
     // draw the squares
@@ -23,6 +26,26 @@ TicTacController::TicTacController(QWidget *parent)
     grid->setPos(0,0);
     scene.addItem(grid);
 
+    // selection indicators
+    UiItem *selectX = new UiItem('x', &engine);
+    selectX->setPos(300,0);
+    scene.addItem(selectX);
+    UiItem *selectO = new UiItem('o', &engine);
+    selectO->setPos(400,0);
+    scene.addItem(selectO);
+
+    // turn indicator
+    UiItem *arrow = new UiItem('a', &engine);
+    arrow->setPos(300,100);
+    scene.addItem(arrow);
+    UiItem *whoTurn = new UiItem('w', &engine);
+    whoTurn->setPos(350,100);
+    scene.addItem(whoTurn);
+
+    // quit button
+    UiItem *quit = new UiItem('q', &engine);
+    quit->setPos(400,210);
+    scene.addItem(quit);
 }
 
 void TicTacController::restart()
@@ -36,6 +59,27 @@ void TicTacController::restart()
     GameGrid *grid = new GameGrid;
     grid->setPos(0,0);
     scene.addItem(grid);
+
+    // selection indicators
+    UiItem *selectX = new UiItem('x', &engine);
+    selectX->setPos(300,0);
+    scene.addItem(selectX);
+    UiItem *selectO = new UiItem('o', &engine);
+    selectO->setPos(400,0);
+    scene.addItem(selectO);
+
+    // turn indicator
+    UiItem *arrow = new UiItem('a', &engine);
+    arrow->setPos(300,100);
+    scene.addItem(arrow);
+    UiItem *whoTurn = new UiItem('w', &engine);
+    whoTurn->setPos(350,100);
+    scene.addItem(whoTurn);
+
+    // quit button
+    UiItem *quit = new UiItem('q', &engine);
+    quit->setPos(400,210);
+    scene.addItem(quit);
 }
 
 QGraphicsScene * TicTacController::getScene()
@@ -104,7 +148,7 @@ GameSquare * TicTacController::addToken(char token, int location)
             x = 300;
             y = 300;
     }
-    GameSquare *newsquare = new GameSquare(token, location);
+    GameSquare *newsquare = new GameSquare(token, location, &engine);
     newsquare->setPos(x,y);
     connect(newsquare, SIGNAL(tokenChange(GameSquare*)), this, SLOT(onTokenChange(GameSquare *)));
     return newsquare;

@@ -9,8 +9,11 @@ public:
     bool isOver();
     char whoseTurnIsIt();
     void update(char, int);
+    char whatIsSelected();
+    void changeSelect(char);
 private:
     char whoseTurn;
+    char selected;
     char tokens[9];
 };
 #endif

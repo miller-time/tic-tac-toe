@@ -1,34 +1,32 @@
-#ifndef GAMESQUARE_H
-#define GAMESQUARE_H
+#ifndef UIITEM_H
+#define UIITEM_H
 
-#include <QGraphicsItem>
-#include <QObject>
+#include <QtGui>
 #include "gameengine.h"
 
-class GameSquare
+class UiItem
     : public QObject
     , public QGraphicsItem
 {
     Q_OBJECT
     Q_INTERFACES(QGraphicsItem)
 public:
-    GameSquare(char, int, GameEngine*);
+    UiItem(char, GameEngine*);
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
     void paint(QPainter *painter,
                const QStyleOptionGraphicsItem *,
                QWidget *);
-    void changeToken();
-    char getToken();
-    int getLoc();
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
-signals:
-    void tokenChange(GameSquare *);
+//signals:
+//    void changedPic(GameSquare *);
 private:
-    char current_letter;
-    int location;
+    char id;
+    int xSize;
+    int ySize;
+    QString imageFile;
     GameEngine *engine;
 };
 
-#endif // GAMESQUARE_H
+#endif // UIITEM_H

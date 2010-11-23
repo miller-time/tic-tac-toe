@@ -14,9 +14,11 @@ SOURCES += main.cpp\
         tictactoe.cpp \
     gamesquare.cpp \
     gamegrid.cpp \
-    gameengine.cpp
+    gameengine.cpp \
+    uiitem.cpp
 
 HEADERS  += tictactoe.h \
     gamesquare.h \
     gamegrid.h \
-    gameengine.h
+    gameengine.h \
+    uiitem.h

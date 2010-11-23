@@ -20,6 +20,7 @@ private:
     GameGrid *grid;
     QGraphicsScene scene;
     GameEngine engine;
+    char current_selection;
 };
 
 #endif // TICTACTOE_H

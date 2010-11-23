@@ -1,6 +1,6 @@
 #include "gameengine.h"
 
-GameEngine::GameEngine():whoseTurn('X')
+GameEngine::GameEngine():whoseTurn('X'),selected(' ')
 {
     int i;
     for (i = 0; i < 9; i++)
@@ -13,6 +13,16 @@ void GameEngine::changeTurn()
         whoseTurn = 'O';
     else
         whoseTurn = 'X';
+}
+
+char GameEngine::whatIsSelected()
+{
+    return selected;
+}
+
+void GameEngine::changeSelect(char toWhat)
+{
+    selected = toWhat;
 }
 
 bool GameEngine::isOver()
@@ -76,6 +86,11 @@ bool GameEngine::isOver()
             returnval = true;
     }
     return returnval;
+}
+
+char GameEngine::whoseTurnIsIt()
+{
+    return whoseTurn;
 }
 
 void GameEngine::update(char t, int l)
