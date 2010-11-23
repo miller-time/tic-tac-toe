@@ -5,7 +5,8 @@
 #include <QPixmap>
 #include "gamesquare.h"
 
-GameSquare::GameSquare(char token) : current_letter(token)
+GameSquare::GameSquare(char token, int loc)
+    : current_letter(token), location(loc)
 {
 }
 
@@ -42,9 +43,22 @@ void GameSquare::changeToken()
         current_letter = 'X';
 }
 
+char GameSquare::getToken()
+{
+    return current_letter;
+}
+
+int GameSquare::getLoc()
+{
+    return location;
+}
+
 void GameSquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+    if (!event)
+        return;
     this->changeToken();
     QRect target(0,0,100,100);
     update(target);
+    emit tokenChange(this);
 }

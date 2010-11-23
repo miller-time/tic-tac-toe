@@ -13,8 +13,10 @@ TEMPLATE = app
 SOURCES += main.cpp\
         tictactoe.cpp \
     gamesquare.cpp \
-    gamegrid.cpp
+    gamegrid.cpp \
+    gameengine.cpp
 
 HEADERS  += tictactoe.h \
     gamesquare.h \
-    gamegrid.h
+    gamegrid.h \
+    gameengine.h

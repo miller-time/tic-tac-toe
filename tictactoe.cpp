@@ -1,10 +1,11 @@
 #include <QtGui>
-
+#include <QMessageBox>
 #include "tictactoe.h"
 #include "gamesquare.h"
 #include "gamegrid.h"
 
-TicTacController::TicTacController()
+TicTacController::TicTacController(QWidget *parent)
+    : QWidget (parent)
 {
     // initialize the scene
     scene.setSceneRect(0,0,300,300);
@@ -27,6 +28,15 @@ TicTacController::TicTacController()
 QGraphicsScene * TicTacController::getScene()
 {
     return &scene;
+}
+
+void TicTacController::onTokenChange(GameSquare *square)
+{
+    char token = square->getToken();
+    int location = square->getLoc();
+    engine.update(token, location);
+    if (engine.isOver())
+        QMessageBox::information(this, tr("Game Over"), tr("Game Over"));
 }
 
 GameSquare * TicTacController::addToken(char token, int location)
@@ -75,7 +85,8 @@ GameSquare * TicTacController::addToken(char token, int location)
             x = 300;
             y = 300;
     }
-    GameSquare *newsquare = new GameSquare(token);
+    GameSquare *newsquare = new GameSquare(token, location);
     newsquare->setPos(x,y);
+    connect(newsquare, SIGNAL(tokenChange(GameSquare*)), this, SLOT(onTokenChange(GameSquare *)));
     return newsquare;
 }

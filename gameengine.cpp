@@ -1,55 +1,13 @@
-#include "game.h"
-#include <iostream>
-#include <string.h>
-#include <sstream>
-using namespace std;
+#include "gameengine.h"
 
-Game::Game():whoseTurn('X')
+GameEngine::GameEngine():whoseTurn('X')
 {
     int i;
     for (i = 0; i < 9; i++)
         tokens[i] = '-';
 }
 
-void Game::showBoard()
-{
-    cout << tokens[0] << tokens[1] << tokens[2] << endl
-         << tokens[3] << tokens[4] << tokens[5] << endl
-         << tokens[6] << tokens[7] << tokens[8] << endl;
-}
-
-bool Game::takeTurn()
-{
-    showBoard();
-    int location;
-    do
-    {
-        cout << whoseTurn << "'s turn\n";
-        string input;
-        getline(cin, input);
-        stringstream ss(input);
-        ss >> location;
-    } while (location < 1 || location > 9);
-
-    if (tokens[location-1] == '-') {
-        tokens[location-1] = whoseTurn;
-        return true;
-    } else {
-        return false;
-    }
-}
-
-void Game::start()
-{
-    while (!isOver())
-    {
-        if (takeTurn())
-            changeTurn();
-    }
-//    gameOver();
-}
-
-void Game::changeTurn()
+void GameEngine::changeTurn()
 {
     if (whoseTurn == 'X')
         whoseTurn = 'O';
@@ -57,7 +15,7 @@ void Game::changeTurn()
         whoseTurn = 'X';
 }
 
-bool Game::isOver()
+bool GameEngine::isOver()
 {
     int tokenvalues[9];
     int i;
@@ -118,4 +76,9 @@ bool Game::isOver()
             returnval = true;
     }
     return returnval;
+}
+
+void GameEngine::update(char t, int l)
+{
+    tokens[l - 1] = t;
 }
