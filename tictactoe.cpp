@@ -8,11 +8,25 @@
 TicTacController::TicTacController(QWidget *parent)
     : QWidget (parent)
 {
-    current_selection = ' ';
 
     // initialize the scene
     scene.setSceneRect(0,0,500,300);
     scene.setItemIndexMethod(QGraphicsScene::NoIndex);
+
+    // use the restart function to initialize objects to the scene
+    restart();
+}
+
+void TicTacController::restart()
+{
+    // not selecting anything initially
+    current_selection = ' ';
+    // clear background gameboard
+    engine.reset();
+    // remove anything added to scene
+    scene.clear();
+
+    // (re)add all objects to scene
 
     // draw the squares
     int i;
@@ -40,57 +54,15 @@ TicTacController::TicTacController(QWidget *parent)
 
     // turn indicator
     UiItem *arrow = new UiItem('a', &engine);
-    arrow->setPos(300,100);
+    arrow->setPos(340,120);
     scene.addItem(arrow);
     UiItem *whoTurn = new UiItem('w', &engine);
-    whoTurn->setPos(350,100);
+    whoTurn->setPos(370,120);
     scene.addItem(whoTurn);
 
     // quit button
     UiItem *quit = new UiItem('q', &engine);
-    quit->setPos(400,210);
-    scene.addItem(quit);
-    connect(quit, SIGNAL(clicked()), this, SLOT(exitProgram()));
-}
-
-void TicTacController::restart()
-{
-    current_selection = ' ';
-
-    engine.reset();
-    scene.clear();
-    int i;
-    for(i = 1; i < 10; i++)
-    {
-        scene.addItem(addToken(' ', i));
-    }
-    GameGrid *grid = new GameGrid;
-    grid->setPos(0,0);
-    scene.addItem(grid);
-
-    // selection indicators
-    UiItem *selectX = new UiItem('x', &engine);
-    selectX->setPos(300,0);
-    scene.addItem(selectX);
-    connect(selectX, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
-    connect(this, SIGNAL(updateUI()), selectX, SLOT(needToUpdate()));
-    UiItem *selectO = new UiItem('o', &engine);
-    selectO->setPos(400,0);
-    scene.addItem(selectO);
-    connect(selectO, SIGNAL(selectChanged(char)), this, SLOT(onSelectChange(char)));
-    connect(this, SIGNAL(updateUI()), selectO, SLOT(needToUpdate()));
-
-    // turn indicator
-    UiItem *arrow = new UiItem('a', &engine);
-    arrow->setPos(300,100);
-    scene.addItem(arrow);
-    UiItem *whoTurn = new UiItem('w', &engine);
-    whoTurn->setPos(350,100);
-    scene.addItem(whoTurn);
-
-    // quit button
-    UiItem *quit = new UiItem('q', &engine);
-    quit->setPos(400,210);
+    quit->setPos(450,250);
     scene.addItem(quit);
     connect(quit, SIGNAL(clicked()), this, SLOT(exitProgram()));
 }

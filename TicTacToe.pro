@@ -22,3 +22,6 @@ HEADERS  += tictactoe.h \
     gamegrid.h \
     gameengine.h \
     uiitem.h
+
+RESOURCES += \
+    tictactoe.qrc

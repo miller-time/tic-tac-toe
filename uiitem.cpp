@@ -10,31 +10,31 @@ UiItem::UiItem(char identifier, GameEngine *eng) : id (identifier), engine (eng)
         // The X selection indicator
         xSize = 100;
         ySize = 100;
-        imageFile = "images/grey-x.png";
+        imageFile = ":/images/grey-x.png";
         break;
     case 'o':
         // The O selection indicator
         xSize = 100;
         ySize = 100;
-        imageFile = "images/grey-o.png";
+        imageFile = ":/images/grey-o.png";
         break;
     case 'a':
         // The arrow for turn indicator
-        xSize = 50;
-        ySize = 100;
-        imageFile = "images/arrow.png";
+        xSize = 30;
+        ySize = 60;
+        imageFile = ":/images/arrow.png";
         break;
     case 'w':
         // The turn indicator letter
-        xSize = 100;
-        ySize = 100;
-        imageFile = "images/red-x.png";
+        xSize = 60;
+        ySize = 60;
+        imageFile = ":/images/red-x.png";
         break;
     case 'q':
         // The quit button
-        xSize = 75;
-        ySize = 75;
-        imageFile = "images/quit.png";
+        xSize = 50;
+        ySize = 50;
+        imageFile = ":/images/quit.png";
         break;
     default:
         xSize = 0;
@@ -52,16 +52,16 @@ void UiItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
 {
     // check to see if a piece got placed, deselect that letter
     if ((id == 'x') && (engine->whatIsSelected() == ' '))
-        imageFile = "images/grey-x.png";
+        imageFile = ":/images/grey-x.png";
     if ((id == 'o') && (engine->whatIsSelected() == ' '))
-        imageFile = "images/grey-o.png";
+        imageFile = ":/images/grey-o.png";
     // check whose turn it is
     if (id == 'w')
     {
         if (engine->whoseTurnIsIt() == 'X')
-            imageFile = "images/red-x.png";
+            imageFile = ":/images/red-x.png";
         else
-            imageFile = "images/red-o.png";
+            imageFile = ":/images/red-o.png";
     }
 
     QPixmap token(imageFile, 0, Qt::AutoColor);
@@ -83,7 +83,7 @@ void UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
     {
         // clicked on select X
         emit selectChanged('X');
-        imageFile = "images/x.png";
+        imageFile = ":/images/blue-x.png";
         QRect target(0,0,xSize,ySize);
         update(target);
     }
@@ -91,7 +91,7 @@ void UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
     {
         // clicked on select O
         emit selectChanged('O');
-        imageFile = "images/o.png";
+        imageFile = ":/images/blue-o.png";
         QRect target(0,0,xSize,ySize);
         update(target);
     }

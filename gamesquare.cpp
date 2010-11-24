@@ -21,11 +21,11 @@ void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWid
     QString fileName;
     if (current_letter == 'X')
     {
-        fileName = "images/x.png";
+        fileName = ":/images/x.png";
     }
     else  if (current_letter == 'O')
     {
-        fileName = "images/o.png";
+        fileName = ":/images/o.png";
     }
     else
         return;
