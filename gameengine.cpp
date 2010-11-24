@@ -9,7 +9,17 @@ GameEngine::GameEngine():whoseTurn('X'),selected(' ')
 
 void GameEngine::changeTurn()
 {
-    if (whoseTurn == 'X')
+    int i;
+    int x = 0;
+    int o = 0;
+    for (i = 0; i < 9; i++)
+    {
+        if (tokens[i] == 'X')
+            x += 1;
+        if (tokens[i] == 'O')
+            o += 1;
+    }
+    if (x > o)
         whoseTurn = 'O';
     else
         whoseTurn = 'X';
