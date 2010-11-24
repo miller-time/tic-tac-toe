@@ -1,0 +1,17 @@
+TicTacToe
+
+Hey here's some instructions for playing the game, since in its early stages it
+can be difficult to understand exactly.
+
+When the game launches it should show a red "X" on the right, with an arrow.
+This is the turn indicator, letting you know it's X's turn. Currently this does
+not correctly change for every turn, so it will probably stay X. I have seen it
+switch to O on a new game, however.
+
+Above the red "X" you'll see two grey letters. These are how you select what to
+play. When you click one you have selected that letter. It's supposed to turn
+blue, but that also isn't working quite yet. Once you have selected a letter you
+may place it in any empty space.
+
+The game ends when either X wins, O wins, or the board is full. And another game
+will start right away.
