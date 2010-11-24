@@ -80,13 +80,25 @@ void TicTacController::onTokenChange(GameSquare *square)
     engine.changeSelect(' ');
     engine.changeTurn();
     emit updateUI();
-    if (engine.isOver())
+    char status = engine.isOver();
+    switch (status)
     {
-        QMessageBox::information(this, tr("Game Over"), tr("Game Over"));
+    case 'd':       // code for "D"raw
+        QMessageBox::information(this, tr("Game Over"), tr("Draw"));
         restart();
-        int i;
-        for (i = 1; i < 10; i++)
-            engine.update('-', i);
+        break;
+    case 'x':       // code for "X" Wins
+        QMessageBox::information(this, tr("Game Over"), tr("X Wins!"));
+        restart();
+        break;
+    case 'o':       // code for "O" Wins
+        QMessageBox::information(this, tr("Game Over"), tr("O Wins!"));
+        restart();
+        break;
+    case 'n':       // code for "N"ot over
+        // do nothing
+    default:
+        break;
     }
 }
 
