@@ -6,7 +6,7 @@ class GameEngine
 public:
     GameEngine();
     void changeTurn();
-    bool isOver();
+    char isOver();
     char whoseTurnIsIt();
     void update(char, int);
     char whatIsSelected();

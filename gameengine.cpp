@@ -25,7 +25,7 @@ void GameEngine::changeSelect(char toWhat)
     selected = toWhat;
 }
 
-bool GameEngine::isOver()
+char GameEngine::isOver()
 {
     // count squares
     int tokenvalues[9];
@@ -80,13 +80,22 @@ bool GameEngine::isOver()
                    tokenvalues[4] +
                    tokenvalues[6];
 
-    bool returnval = false;
+    char returnval = 'n';       // code letter for "N"o, it's not over.
     // check for 3 in a row
     for (i = 0; i < 8; i++)
     {
-        if ((rowvalues[i] == -3) ||
-            (rowvalues[i] == 3))
-            returnval = true;
+        // note: check for previously declared winner first
+        // to avoid 2 winners at the same time..
+        if ((rowvalues[i] == -3) && (returnval == 'n'))
+        {
+            // 3 X's in a "row"
+            returnval = 'x';    // code letter for "X" wins.
+        }
+        if ((rowvalues[i] == 3) && (returnval == 'n'))
+        {
+            // 3 O's in a "row"
+            returnval = 'o';    // code letter for "O" wins.
+        }
     }
     // check if board full
     bool full = true;
@@ -95,9 +104,9 @@ bool GameEngine::isOver()
         if (tokenvalues[i] == 0)
             full = false;
     }
-    // if there was no winner check if board was full
-    if (!returnval)
-        returnval = full; // if this is true, it was tie
+    // if there was no winner and board was full, declare draw
+    if ((returnval == 'n') && (full))
+        returnval = 'd';        // code letter for "D"raw.
     return returnval;
 }
 
