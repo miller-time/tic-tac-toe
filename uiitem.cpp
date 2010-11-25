@@ -58,7 +58,7 @@ void UiItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
     // check whose turn it is
     if (id == 'w')
     {
-        qDebug() << engine->whoseTurnIsIt();
+        //qDebug() << engine->whoseTurnIsIt();
         if (engine->whoseTurnIsIt() == 'X')
             imageFile = ":/images/red-x.png";
         else

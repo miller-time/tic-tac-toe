@@ -1,5 +1,6 @@
 #include <QtGui>
 #include <QMessageBox>
+#include <QDebug>
 #include "tictactoe.h"
 #include "gamesquare.h"
 #include "gamegrid.h"
@@ -59,6 +60,7 @@ void TicTacController::restart()
     UiItem *whoTurn = new UiItem('w', &engine);
     whoTurn->setPos(370,120);
     scene.addItem(whoTurn);
+    connect(this, SIGNAL(updateUI()), whoTurn, SLOT(needToUpdate()));
 
     // quit button
     UiItem *quit = new UiItem('q', &engine);
@@ -79,6 +81,10 @@ void TicTacController::onTokenChange(GameSquare *square)
     engine.update(token, location);
     engine.changeSelect(' ');
     engine.changeTurn();
+/*
+    QString allSquares = engine.tokenstring();
+    qDebug() << allSquares;
+*/
     emit updateUI();
     char status = engine.isOver();
     switch (status)

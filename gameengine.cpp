@@ -138,3 +138,14 @@ void GameEngine::reset()
     whoseTurn = 'X';
     selected = ' ';
 }
+
+QString GameEngine::tokenstring()
+{
+    QString allSquares;
+    int i;
+    for(i = 0; i < 9; i++)
+    {
+        allSquares += tokens[i];
+    }
+    return allSquares;
+}

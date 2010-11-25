@@ -3,6 +3,7 @@
 #include <QStyleOption>
 #include <QString>
 #include <QPixmap>
+#include <QDebug>
 #include "gamesquare.h"
 #include "gameengine.h"
 
