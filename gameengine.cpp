@@ -133,46 +133,46 @@ char GameEngine::isOver()
         !((tokens[4] == 'O') && (tokens[5] == 'X')))
         winImpossible = false;
     if (!((tokens[6] == 'X') && (tokens[7] == 'O')) &&
-        ((tokens[6] == 'X') && (tokens[8] == 'O')) && // bottom row
-        ((tokens[7] == 'X') && (tokens[8] == 'O')) &&
-        ((tokens[6] == 'O') && (tokens[7] == 'X')) &&
-        ((tokens[6] == 'O') && (tokens[8] == 'X')) &&
-        ((tokens[7] == 'O') && (tokens[8] == 'X')))
+        !((tokens[6] == 'X') && (tokens[8] == 'O')) && // bottom row
+        !((tokens[7] == 'X') && (tokens[8] == 'O')) &&
+        !((tokens[6] == 'O') && (tokens[7] == 'X')) &&
+        !((tokens[6] == 'O') && (tokens[8] == 'X')) &&
+        !((tokens[7] == 'O') && (tokens[8] == 'X')))
         winImpossible = false;
     if (!((tokens[0] == 'X') && (tokens[3] == 'O')) &&
-        ((tokens[0] == 'X') && (tokens[6] == 'O')) && // left column
-        ((tokens[3] == 'X') && (tokens[6] == 'O')) &&
-        ((tokens[0] == 'O') && (tokens[3] == 'X')) &&
-        ((tokens[0] == 'O') && (tokens[6] == 'X')) &&
-        ((tokens[3] == 'O') && (tokens[6] == 'X')))
+        !((tokens[0] == 'X') && (tokens[6] == 'O')) && // left column
+        !((tokens[3] == 'X') && (tokens[6] == 'O')) &&
+        !((tokens[0] == 'O') && (tokens[3] == 'X')) &&
+        !((tokens[0] == 'O') && (tokens[6] == 'X')) &&
+        !((tokens[3] == 'O') && (tokens[6] == 'X')))
         winImpossible = false;
     if (!((tokens[1] == 'X') && (tokens[4] == 'O')) &&
-        ((tokens[1] == 'X') && (tokens[7] == 'O')) && // middle column
-        ((tokens[4] == 'X') && (tokens[7] == 'O')) &&
-        ((tokens[1] == 'O') && (tokens[4] == 'X')) &&
-        ((tokens[1] == 'O') && (tokens[7] == 'X')) &&
-        ((tokens[4] == 'O') && (tokens[7] == 'X')))
+        !((tokens[1] == 'X') && (tokens[7] == 'O')) && // middle column
+        !((tokens[4] == 'X') && (tokens[7] == 'O')) &&
+        !((tokens[1] == 'O') && (tokens[4] == 'X')) &&
+        !((tokens[1] == 'O') && (tokens[7] == 'X')) &&
+        !((tokens[4] == 'O') && (tokens[7] == 'X')))
         winImpossible = false;
     if (!((tokens[2] == 'X') && (tokens[5] == 'O')) &&
-        ((tokens[2] == 'X') && (tokens[8] == 'O')) && // right column
-        ((tokens[5] == 'X') && (tokens[8] == 'O')) &&
-        ((tokens[2] == 'O') && (tokens[5] == 'X')) &&
-        ((tokens[2] == 'O') && (tokens[8] == 'X')) &&
-        ((tokens[5] == 'O') && (tokens[8] == 'X')))
+        !((tokens[2] == 'X') && (tokens[8] == 'O')) && // right column
+        !((tokens[5] == 'X') && (tokens[8] == 'O')) &&
+        !((tokens[2] == 'O') && (tokens[5] == 'X')) &&
+        !((tokens[2] == 'O') && (tokens[8] == 'X')) &&
+        !((tokens[5] == 'O') && (tokens[8] == 'X')))
         winImpossible = false;
     if (!((tokens[0] == 'X') && (tokens[4] == 'O')) &&
-        ((tokens[0] == 'X') && (tokens[8] == 'O')) && // '\' diagonal
-        ((tokens[4] == 'X') && (tokens[8] == 'O')) &&
-        ((tokens[0] == 'O') && (tokens[4] == 'X')) &&
-        ((tokens[0] == 'O') && (tokens[8] == 'X')) &&
-        ((tokens[4] == 'O') && (tokens[8] == 'X')))
+        !((tokens[0] == 'X') && (tokens[8] == 'O')) && // '\' diagonal
+        !((tokens[4] == 'X') && (tokens[8] == 'O')) &&
+        !((tokens[0] == 'O') && (tokens[4] == 'X')) &&
+        !((tokens[0] == 'O') && (tokens[8] == 'X')) &&
+        !((tokens[4] == 'O') && (tokens[8] == 'X')))
         winImpossible = false;
     if (!((tokens[2] == 'X') && (tokens[4] == 'O')) &&
-        ((tokens[2] == 'X') && (tokens[6] == 'O')) && // '/' diagonal
-        ((tokens[4] == 'X') && (tokens[6] == 'O')) &&
-        ((tokens[2] == 'O') && (tokens[4] == 'X')) &&
-        ((tokens[2] == 'O') && (tokens[6] == 'X')) &&
-        ((tokens[4] == 'O') && (tokens[6] == 'X')))
+        !((tokens[2] == 'X') && (tokens[6] == 'O')) && // '/' diagonal
+        !((tokens[4] == 'X') && (tokens[6] == 'O')) &&
+        !((tokens[2] == 'O') && (tokens[4] == 'X')) &&
+        !((tokens[2] == 'O') && (tokens[6] == 'X')) &&
+        !((tokens[4] == 'O') && (tokens[6] == 'X')))
         winImpossible = false;
 
     // if there was no winner and board was full(or win is impossible), declare draw
