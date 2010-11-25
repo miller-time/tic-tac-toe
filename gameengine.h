@@ -1,5 +1,8 @@
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
+
+#include <QString>
+
 class GameEngine
 {
 
@@ -12,6 +15,7 @@ public:
     char whatIsSelected();
     void changeSelect(char);
     void reset();
+    QString tokenstring();
 private:
     char whoseTurn;
     char selected;
