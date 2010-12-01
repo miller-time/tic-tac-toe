@@ -11,7 +11,8 @@
 #include <QtGui>
 #include "tictactoe.hh"
 
-int main(int argc, char *argv[])
+int
+main(int argc, char *argv[])
 {
     // make the program a Q Application
     QApplication app(argc, argv);

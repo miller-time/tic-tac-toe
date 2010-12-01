@@ -24,7 +24,8 @@ TicTacController::TicTacController(QWidget *parent)
     restart();
 }
 
-void TicTacController::restart()
+void
+TicTacController::restart()
 {
     // not selecting anything initially
     current_selection = ' ';
@@ -75,12 +76,14 @@ void TicTacController::restart()
     connect(quit, SIGNAL(clicked()), this, SLOT(exitProgram()));
 }
 
-QGraphicsScene * TicTacController::getScene()
+QGraphicsScene *
+TicTacController::getScene()
 {
     return &scene;
 }
 
-void TicTacController::onTokenChange(GameSquare *square)
+void
+TicTacController::onTokenChange(GameSquare *square)
 {
     char token = square->getToken();
     int location = square->getLoc();
@@ -114,17 +117,20 @@ void TicTacController::onTokenChange(GameSquare *square)
     }
 }
 
-void TicTacController::onSelectChange(char toWhat)
+void
+TicTacController::onSelectChange(char toWhat)
 {
     engine.changeSelect(toWhat);
 }
 
-void TicTacController::exitProgram()
+void
+TicTacController::exitProgram()
 {
     exit(0);
 }
 
-GameSquare * TicTacController::addToken(char token, int location)
+GameSquare *
+TicTacController::addToken(char token, int location)
 {
     int x,y;
     // determine coordinate from location

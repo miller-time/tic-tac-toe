@@ -18,12 +18,14 @@ GameSquare::GameSquare(char token, int loc, GameEngine *eng)
 {
 }
 
-QRectF GameSquare::boundingRect() const
+QRectF
+GameSquare::boundingRect() const
 {
     return QRectF(0,0,100,100);
 }
 
-void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void
+GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     QString fileName;
     if (current_letter == 'X')
@@ -40,14 +42,16 @@ void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWid
     painter->drawPixmap(0,0,token);
 }
 
-QPainterPath GameSquare::shape () const
+QPainterPath
+GameSquare::shape () const
 {
     QPainterPath path;
     path.addRect(0,0,100,100);
     return path;
 }
 
-void GameSquare::changeToken()
+void
+GameSquare::changeToken()
 {
     if (current_letter == ' ')
     {
@@ -55,17 +59,20 @@ void GameSquare::changeToken()
     }
 }
 
-char GameSquare::getToken()
+char
+GameSquare::getToken()
 {
     return current_letter;
 }
 
-int GameSquare::getLoc()
+int
+GameSquare::getLoc()
 {
     return location;
 }
 
-void GameSquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void
+GameSquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (!event)
         return;
