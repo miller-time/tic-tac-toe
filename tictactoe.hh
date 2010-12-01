@@ -1,10 +1,16 @@
+// Copyright 2010 by Russell Miller
+// Please see included license information in file
+// COPYING or visit
+// http://opensource.org/licenses/mit-license.php
+
+
 #ifndef TICTACCONTROLLER_H
 #define TICTACCONTROLLER_H
 
 #include <QtGui>
-#include "gamesquare.h"
-#include "gamegrid.h"
-#include "gameengine.h"
+#include "gamesquare.hh"
+#include "gamegrid.hh"
+#include "gameengine.hh"
 
 class TicTacController : public QWidget
 {

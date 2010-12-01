@@ -1,9 +1,15 @@
+// Copyright 2010 by Russell Miller
+// Please see included license information in file
+// COPYING or visit
+// http://opensource.org/licenses/mit-license.php
+
+
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
 #include <QString>
 #include <QPixmap>
-#include "gamegrid.h"
+#include "gamegrid.hh"
 
 GameGrid::GameGrid()
 {

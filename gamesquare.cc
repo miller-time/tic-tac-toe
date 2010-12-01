@@ -1,11 +1,17 @@
+// Copyright 2010 by Russell Miller
+// Please see included license information in file
+// COPYING or visit
+// http://opensource.org/licenses/mit-license.php
+
+
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
 #include <QString>
 #include <QPixmap>
 #include <QDebug>
-#include "gamesquare.h"
-#include "gameengine.h"
+#include "gamesquare.hh"
+#include "gameengine.hh"
 
 GameSquare::GameSquare(char token, int loc, GameEngine *eng)
     : current_letter(token), location(loc), engine(eng)

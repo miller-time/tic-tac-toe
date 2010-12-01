@@ -1,4 +1,10 @@
-#include "gameengine.h"
+// Copyright 2010 by Russell Miller
+// Please see included license information in file
+// COPYING or visit
+// http://opensource.org/licenses/mit-license.php
+
+
+#include "gameengine.hh"
 
 GameEngine::GameEngine():whoseTurn('X'),selected(' ')
 {

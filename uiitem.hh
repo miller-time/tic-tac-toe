@@ -1,8 +1,14 @@
+// Copyright 2010 by Russell Miller
+// Please see included license information in file
+// COPYING or visit
+// http://opensource.org/licenses/mit-license.php
+
+
 #ifndef UIITEM_H
 #define UIITEM_H
 
 #include <QtGui>
-#include "gameengine.h"
+#include "gameengine.hh"
 
 class UiItem
     : public QObject

@@ -1,10 +1,16 @@
+// Copyright 2010 by Russell Miller
+// Please see included license information in file
+// COPYING or visit
+// http://opensource.org/licenses/mit-license.php
+
+
 #include <QtGui>
 #include <QMessageBox>
 #include <QDebug>
-#include "tictactoe.h"
-#include "gamesquare.h"
-#include "gamegrid.h"
-#include "uiitem.h"
+#include "tictactoe.hh"
+#include "gamesquare.hh"
+#include "gamegrid.hh"
+#include "uiitem.hh"
 
 TicTacController::TicTacController(QWidget *parent)
     : QWidget (parent)

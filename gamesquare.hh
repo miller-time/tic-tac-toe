@@ -1,9 +1,15 @@
+// Copyright 2010 by Russell Miller
+// Please see included license information in file
+// COPYING or visit
+// http://opensource.org/licenses/mit-license.php
+
+
 #ifndef GAMESQUARE_H
 #define GAMESQUARE_H
 
 #include <QGraphicsItem>
 #include <QObject>
-#include "gameengine.h"
+#include "gameengine.hh"
 
 class GameSquare
     : public QObject
