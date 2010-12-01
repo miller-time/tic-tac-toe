@@ -23,6 +23,7 @@ public:
     void reset();
     QString tokenstring();
 private:
+    int drawn();
     char whoseTurn;
     char selected;
     char tokens[9];

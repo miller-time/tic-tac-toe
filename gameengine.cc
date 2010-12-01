@@ -125,65 +125,8 @@ GameEngine::isOver()
         if (tokenvalues[i] == 0)
             full = false;
     }
-    // check if win impossible
-    bool winImpossible = true;
-    // every possible combination of X and O in same row
-    if (!((tokens[0] == 'X') && (tokens[1] == 'O')) &&
-        !((tokens[0] == 'X') && (tokens[2] == 'O')) && // top row
-        !((tokens[1] == 'X') && (tokens[2] == 'O')) &&
-        !((tokens[0] == 'O') && (tokens[1] == 'X')) &&
-        !((tokens[0] == 'O') && (tokens[2] == 'X')) &&
-        !((tokens[1] == 'O') && (tokens[2] == 'X')))
-        winImpossible = false;
-    if (!((tokens[3] == 'X') && (tokens[4] == 'O')) &&
-        !((tokens[3] == 'X') && (tokens[5] == 'O')) && // middle row
-        !((tokens[4] == 'X') && (tokens[5] == 'O')) &&
-        !((tokens[3] == 'O') && (tokens[4] == 'X')) &&
-        !((tokens[3] == 'O') && (tokens[5] == 'X')) &&
-        !((tokens[4] == 'O') && (tokens[5] == 'X')))
-        winImpossible = false;
-    if (!((tokens[6] == 'X') && (tokens[7] == 'O')) &&
-        !((tokens[6] == 'X') && (tokens[8] == 'O')) && // bottom row
-        !((tokens[7] == 'X') && (tokens[8] == 'O')) &&
-        !((tokens[6] == 'O') && (tokens[7] == 'X')) &&
-        !((tokens[6] == 'O') && (tokens[8] == 'X')) &&
-        !((tokens[7] == 'O') && (tokens[8] == 'X')))
-        winImpossible = false;
-    if (!((tokens[0] == 'X') && (tokens[3] == 'O')) &&
-        !((tokens[0] == 'X') && (tokens[6] == 'O')) && // left column
-        !((tokens[3] == 'X') && (tokens[6] == 'O')) &&
-        !((tokens[0] == 'O') && (tokens[3] == 'X')) &&
-        !((tokens[0] == 'O') && (tokens[6] == 'X')) &&
-        !((tokens[3] == 'O') && (tokens[6] == 'X')))
-        winImpossible = false;
-    if (!((tokens[1] == 'X') && (tokens[4] == 'O')) &&
-        !((tokens[1] == 'X') && (tokens[7] == 'O')) && // middle column
-        !((tokens[4] == 'X') && (tokens[7] == 'O')) &&
-        !((tokens[1] == 'O') && (tokens[4] == 'X')) &&
-        !((tokens[1] == 'O') && (tokens[7] == 'X')) &&
-        !((tokens[4] == 'O') && (tokens[7] == 'X')))
-        winImpossible = false;
-    if (!((tokens[2] == 'X') && (tokens[5] == 'O')) &&
-        !((tokens[2] == 'X') && (tokens[8] == 'O')) && // right column
-        !((tokens[5] == 'X') && (tokens[8] == 'O')) &&
-        !((tokens[2] == 'O') && (tokens[5] == 'X')) &&
-        !((tokens[2] == 'O') && (tokens[8] == 'X')) &&
-        !((tokens[5] == 'O') && (tokens[8] == 'X')))
-        winImpossible = false;
-    if (!((tokens[0] == 'X') && (tokens[4] == 'O')) &&
-        !((tokens[0] == 'X') && (tokens[8] == 'O')) && // '\' diagonal
-        !((tokens[4] == 'X') && (tokens[8] == 'O')) &&
-        !((tokens[0] == 'O') && (tokens[4] == 'X')) &&
-        !((tokens[0] == 'O') && (tokens[8] == 'X')) &&
-        !((tokens[4] == 'O') && (tokens[8] == 'X')))
-        winImpossible = false;
-    if (!((tokens[2] == 'X') && (tokens[4] == 'O')) &&
-        !((tokens[2] == 'X') && (tokens[6] == 'O')) && // '/' diagonal
-        !((tokens[4] == 'X') && (tokens[6] == 'O')) &&
-        !((tokens[2] == 'O') && (tokens[4] == 'X')) &&
-        !((tokens[2] == 'O') && (tokens[6] == 'X')) &&
-        !((tokens[4] == 'O') && (tokens[6] == 'X')))
-        winImpossible = false;
+    // check if win impossible using Bart Massey's drawn function
+    bool winImpossible = drawn();
 
     // if there was no winner and board was full(or win is impossible), declare draw
     if ((returnval == 'n') && (full || winImpossible))
@@ -223,4 +166,35 @@ GameEngine::tokenstring()
         allSquares += tokens[i];
     }
     return allSquares;
+}
+
+// Following code generously contributed by Bart Massey
+int
+GameEngine::drawn()
+{
+    int lines[8][3] = {
+        {0, 1, 2},
+        {3, 4, 5},
+        {6, 7, 8},
+        {0, 3, 6},
+        {1, 4, 7},
+        {2, 5, 8},
+        {0, 4, 8},
+        {2, 4, 6}
+    };
+
+    int i, j, xflag, oflag;
+    for (i = 0; i < 8; i++) {
+	xflag = 0;
+	oflag = 0;
+	for (j = 0; j < 3; j++) {
+	    if (tokens[lines[i][j]] == 'X')
+		xflag = 1;
+	    else if(tokens[lines[i][j]] == 'O')
+		oflag = 1;
+	}
+        if (!xflag || !oflag)
+	    return 0;
+    }
+    return 1;
 }
