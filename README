@@ -10,7 +10,10 @@ State University Fall 2010 with Bart Massey.
 
 For installation instructions, please see the file INSTALL.
 
-When the game launches it should show a red X on the right, with an arrow.
+This is a simple 2 Player Tic Tac Toe game board. You and a friend can share a
+computer mouse and take turns placing X's and O's.
+
+When the game launches it should show a red X on the right next to an arrow.
 This is the turn indicator, letting you know it's X's turn. When there are less
 X's than O's, this will turn into a red O.
 
@@ -18,8 +21,11 @@ Above the red X you'll see two grey letters. These are how you select what to
 play. When you click one, you have selected that letter. Once you have selected 
 a letter you may place it in any empty space.
 
-The game ends when either X wins, O wins, or there is a draw. Another game
-will start right away.
+The game ends when X wins, O wins, or there is a draw. Another game will start
+right away.
+
+As an explicit requirement, this version of Tic Tac Toe allows and does not
+penalize for playing out of turn.
 
 ===============================================================================
 CONTENTS OF TICTACTOE BUNDLE 11/30/2010
@@ -32,6 +38,7 @@ README              - This file
 INSTALL             - Directions to build the TicTacToe program
 COPYING             - License information
 ADDENDUM            - Addendum to the Wildfire C++ Programming Style Guide
+design-picture.png  - Early rendition of how I wanted game window to look
 
 TicTacToe Source Files:
 ------------------------
@@ -39,3 +46,42 @@ TicTacToe Source Files:
 Makefile            - GNU Makefile for building TicTacToe program
 main.cc             - Entry point for the program
 tictactoe.hh        - Controller class - control main program flow
+tictactoe.cc        - Implements Controller class
+gameengine.hh       - Engine class - do the number crunching
+gameengine.cc       - Implements Engine class
+gamesquare.hh       - Inherits from QGraphicsItem to create images for the 9 squares
+gamesquare.cc       - Implements gamesquares
+gamegrid.hh         - Inherits from QGraphicsItem to create the grid
+gamegrid.cc         - Implements gamegrid
+uiitem.hh           - Inherits from QGraphicsItem to create selection buttons,
+                      turn indicator, and exit button.
+TicTacToe.pro       - Qt project file
+TicTacToe.qrc       - Qt resource file
+
+Media:
+------
+
+images/
+ arrow.png          - Part of the turn indicator
+ rex-x.png          - Turn indicator -- X's Turn
+ red-o.png          - Turn indicator -- O's Turn
+ blue-x.png         - Select button -- X is Selected
+ blue-o.png         - Select button -- O is Selected
+ grey-x.png         - Select button -- X is not Selected
+ grey-o.png         - Select button -- O is not Selected
+ x.png              - Normal X playing piece
+ o.png              - Normal O playing piece
+ quit.png           - Quit Button
+
+Binaries:
+---------
+
+Linux/
+ TicTacToe_Linux32  - Linux i386 executable
+ TicTacToe_Linux64  - Linux x86_64 executable
+Windows/
+ TicTacToe.exe      - Windows executable
+ QtCore4.dll
+ QtGui4.dll         - required Windows libraries... 
+ mingwm10.dll
+ libgcc_s_dw2-1.dll
