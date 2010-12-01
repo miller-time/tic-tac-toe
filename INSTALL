@@ -1,0 +1,17 @@
+Copyright 2010 by Russell Miller
+Please see included license information in file
+COPYING or visit
+http://opensource.org/licenses/mit-license.php
+
+INSTALL
+
+To build and run TicTacToe in the Linux Lab at Portland State University
+type the following command:
+
+    make && ./tictactoe
+
+If this does not work for any reason, simply type the command:
+
+    qmake-qt4
+
+Then try the first command again.
