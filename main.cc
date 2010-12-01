@@ -1,5 +1,15 @@
+// Copyright 2010 by Russell Miller
+// Please see included license information in file
+// COPYING or visit
+// http://opensource.org/licenses/mit-license.php
+
+// main.cc
+// This is the main entry point of the TicTacToe program that instantiates
+// a game controller, and shows its board in a graphics scene, provided
+// by the Qt Library.
+
 #include <QtGui>
-#include "tictactoe.h"
+#include "tictactoe.hh"
 
 int main(int argc, char *argv[])
 {

@@ -4,24 +4,23 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT    += core gui
 
 TARGET = tictactoe
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        tictactoe.cpp \
-    gamesquare.cpp \
-    gamegrid.cpp \
-    gameengine.cpp \
-    uiitem.cpp
+SOURCES  += main.cc         \
+            tictactoe.cc    \
+            gamesquare.cc   \
+            gamegrid.cc     \
+            gameengine.cc   \
+            uiitem.cc
 
-HEADERS  += tictactoe.h \
-    gamesquare.h \
-    gamegrid.h \
-    gameengine.h \
-    uiitem.h
+HEADERS  += tictactoe.hh    \
+            gamesquare.hh   \
+            gamegrid.hh     \
+            gameengine.hh   \
+            uiitem.hh
 
-RESOURCES += \
-    tictactoe.qrc
+RESOURCES += tictactoe.qrc

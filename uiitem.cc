@@ -1,5 +1,10 @@
-#include "uiitem.h"
+// Copyright 2010 by Russell Miller
+// Please see included license information in file
+// COPYING or visit
+// http://opensource.org/licenses/mit-license.php
 
+
+#include "uiitem.hh"
 #include <QDebug>
 
 UiItem::UiItem(char identifier, GameEngine *eng) : id (identifier), engine (eng)
