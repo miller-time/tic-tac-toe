@@ -39,9 +39,7 @@ TicTacController::restart()
     // draw the squares
     int i;
     for(i = 1; i < 10; i++)
-    {
         scene.addItem(addToken(' ', i));
-    }
 
     // draw the grid
     GameGrid *grid = new GameGrid;
@@ -96,8 +94,7 @@ TicTacController::onTokenChange(GameSquare *square)
 */
     emit updateUI();
     char status = engine.isOver();
-    switch (status)
-    {
+    switch (status) {
     case 'd':       // code for "D"raw
         QMessageBox::information(this, tr("Game Over"), tr("Draw"));
         restart();
@@ -134,8 +131,7 @@ TicTacController::addToken(char token, int location)
 {
     int x,y;
     // determine coordinate from location
-    switch (location)
-    {
+    switch (location) {
         case 1:
             x = 0;
             y = 0;

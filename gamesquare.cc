@@ -29,13 +29,9 @@ GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *
 {
     QString fileName;
     if (current_letter == 'X')
-    {
         fileName = ":/images/x.png";
-    }
     else  if (current_letter == 'O')
-    {
         fileName = ":/images/o.png";
-    }
     else
         return;
     QPixmap token(fileName, 0, Qt::AutoColor);
@@ -54,9 +50,7 @@ void
 GameSquare::changeToken()
 {
     if (current_letter == ' ')
-    {
         current_letter = engine->whatIsSelected();
-    }
 }
 
 char

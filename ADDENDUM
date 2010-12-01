@@ -1,0 +1,36 @@
+Copyright 2010 by Russell Miller
+Please see included license information in file
+COPYING or visit
+http://opensource.org/licenses/mit-license.php
+
+Addendum to the Wildfire C++ Programming Style Guide
+
+3.3 Header File Content
+    The RCS $Header$ variable should be placed as the end of the block comment,
+    or in a comment immediately following it:
+    // $Header$
+
+--->This is not being included as it is not required for Mercurial
+
+    The header guard's #endif need be followed by a comment describing the
+    #ifdef head guard. 
+    After all, it is the last directive in the file and should obvious.
+
+--->This mess of grammar that contradicts itself is being skipped. The latter
+    point that what is being defined is obvious is true.
+
+5.2 Identifier Style
+
+    Identifiers are either upper caps, mixed case, or lower case. If an identifier
+    is upper caps, word separation in multi-word identifiers is done with an
+    underscore (for example, RUN_QUICK). If an identifier is mixed case, it starts
+    with a capital, and word separation is done with caps (for example, RunQuick).
+    If an identifier is lower case, words are separated by underscore (for example,
+    run_quick). Preprocessor identifiers and template parameters are upper case. The
+    mixed case identifiers are global variables, function names, types (including
+    class names), class data members, enum members. Local variables and class member
+    functions are lower case.
+
+--->For class member functions, data members, and local variables the style above 
+    requires something like "foo_bar" and this is being ignored to match the Qt 
+    style of something more like "fooBar".

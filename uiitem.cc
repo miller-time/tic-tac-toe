@@ -9,8 +9,7 @@
 
 UiItem::UiItem(char identifier, GameEngine *eng) : id (identifier), engine (eng)
 {
-    switch(identifier)
-    {
+    switch(identifier) {
     case 'x':
         // The X selection indicator
         xSize = 100;
@@ -63,8 +62,7 @@ UiItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
     if ((id == 'o') && (engine->whatIsSelected() == ' '))
         imageFile = ":/images/grey-o.png";
     // check whose turn it is
-    if (id == 'w')
-    {
+    if (id == 'w') {
         //qDebug() << engine->whoseTurnIsIt();
         if (engine->whoseTurnIsIt() == 'X')
             imageFile = ":/images/red-x.png";
@@ -89,24 +87,19 @@ UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (!event)
         return;
-    if (id == 'x')
-    {
+    if (id == 'x') {
         // clicked on select X
         emit selectChanged('X');
         imageFile = ":/images/blue-x.png";
         QRect target(0,0,xSize,ySize);
         update(target);
-    }
-    else if (id == 'o')
-    {
+    } else if (id == 'o') {
         // clicked on select O
         emit selectChanged('O');
         imageFile = ":/images/blue-o.png";
         QRect target(0,0,xSize,ySize);
         update(target);
-    }
-    else if (id == 'q')
-    {
+    } else if (id == 'q') {
         emit clicked();
     }
 }

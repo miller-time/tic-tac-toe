@@ -4,8 +4,8 @@
 // http://opensource.org/licenses/mit-license.php
 
 
-#ifndef GAMEGRID_H
-#define GAMEGRID_H
+#ifndef _WF_GAMEGRID_H
+#define _WF_GAMEGRID_H
 
 #include <QGraphicsItem>
 

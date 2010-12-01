@@ -4,8 +4,8 @@
 // http://opensource.org/licenses/mit-license.php
 
 
-#ifndef GAMEENGINE_H
-#define GAMEENGINE_H
+#ifndef _WF_GAMEENGINE_H
+#define _WF_GAMEENGINE_H
 
 #include <QString>
 

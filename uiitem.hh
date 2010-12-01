@@ -4,8 +4,8 @@
 // http://opensource.org/licenses/mit-license.php
 
 
-#ifndef UIITEM_H
-#define UIITEM_H
+#ifndef _WF_UIITEM_H
+#define _WF_UIITEM_H
 
 #include <QtGui>
 #include "gameengine.hh"

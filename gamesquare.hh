@@ -4,8 +4,8 @@
 // http://opensource.org/licenses/mit-license.php
 
 
-#ifndef GAMESQUARE_H
-#define GAMESQUARE_H
+#ifndef _WF_GAMESQUARE_H
+#define _WF_GAMESQUARE_H
 
 #include <QGraphicsItem>
 #include <QObject>

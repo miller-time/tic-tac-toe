@@ -4,8 +4,8 @@
 // http://opensource.org/licenses/mit-license.php
 
 
-#ifndef TICTACCONTROLLER_H
-#define TICTACCONTROLLER_H
+#ifndef _WF_TICTACCONTROLLER_H
+#define _WF_TICTACCONTROLLER_H
 
 #include <QtGui>
 #include "gamesquare.hh"
