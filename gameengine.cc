@@ -13,7 +13,8 @@ GameEngine::GameEngine():whoseTurn('X'),selected(' ')
         tokens[i] = '-';
 }
 
-void GameEngine::changeTurn()
+void
+GameEngine::changeTurn()
 {
     int i;
     int x = 0;
@@ -31,17 +32,20 @@ void GameEngine::changeTurn()
         whoseTurn = 'X';
 }
 
-char GameEngine::whatIsSelected()
+char
+GameEngine::whatIsSelected()
 {
     return selected;
 }
 
-void GameEngine::changeSelect(char toWhat)
+void
+GameEngine::changeSelect(char toWhat)
 {
     selected = toWhat;
 }
 
-char GameEngine::isOver()
+char
+GameEngine::isOver()
 {
     // count squares
     int tokenvalues[9];
@@ -187,17 +191,20 @@ char GameEngine::isOver()
     return returnval;
 }
 
-char GameEngine::whoseTurnIsIt()
+char
+GameEngine::whoseTurnIsIt()
 {
     return whoseTurn;
 }
 
-void GameEngine::update(char t, int l)
+void
+GameEngine::update(char t, int l)
 {
     tokens[l - 1] = t;
 }
 
-void GameEngine::reset()
+void
+GameEngine::reset()
 {
     int i;
     for(i = 0; i < 10; i++)
@@ -206,7 +213,8 @@ void GameEngine::reset()
     selected = ' ';
 }
 
-QString GameEngine::tokenstring()
+QString
+GameEngine::tokenstring()
 {
     QString allSquares;
     int i;

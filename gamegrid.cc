@@ -15,12 +15,14 @@ GameGrid::GameGrid()
 {
 }
 
-QRectF GameGrid::boundingRect() const
+QRectF
+GameGrid::boundingRect() const
 {
     return QRectF(0,0,300,300);
 }
 
-void GameGrid::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void
+GameGrid::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     // draw the lines for the tictactoe grid
     QLineF first_vert(0,99, 300,99);
@@ -34,7 +36,8 @@ void GameGrid::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidge
 
 }
 
-QPainterPath GameGrid::shape () const
+QPainterPath
+GameGrid::shape () const
 {
     QPainterPath path;
     path.addRect(0,0,300,300);

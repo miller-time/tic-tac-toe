@@ -48,12 +48,14 @@ UiItem::UiItem(char identifier, GameEngine *eng) : id (identifier), engine (eng)
     }
 }
 
-QRectF UiItem::boundingRect() const
+QRectF
+UiItem::boundingRect() const
 {
     return QRectF(0,0,xSize,ySize);
 }
 
-void UiItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void
+UiItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     // check to see if a piece got placed, deselect that letter
     if ((id == 'x') && (engine->whatIsSelected() == ' '))
@@ -74,14 +76,16 @@ void UiItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
     painter->drawPixmap(0,0,token);
 }
 
-QPainterPath UiItem::shape () const
+QPainterPath
+UiItem::shape () const
 {
     QPainterPath path;
     path.addRect(0,0,xSize,ySize);
     return path;
 }
 
-void UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void
+UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (!event)
         return;
@@ -107,7 +111,8 @@ void UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
 }
 
-void UiItem::needToUpdate()
+void
+UiItem::needToUpdate()
 {
     //qDebug() << "Got the 'need to update' signal!";
     QRect target(0,0,xSize,ySize);
