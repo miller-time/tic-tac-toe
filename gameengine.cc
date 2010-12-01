@@ -19,8 +19,7 @@ GameEngine::changeTurn()
     int i;
     int x = 0;
     int o = 0;
-    for (i = 0; i < 9; i++)
-    {
+    for (i = 0; i < 9; i++) {
         if (tokens[i] == 'X')
             x += 1;
         if (tokens[i] == 'O')
@@ -50,10 +49,8 @@ GameEngine::isOver()
     // count squares
     int tokenvalues[9];
     int i;
-    for (i = 0; i < 9; i++)
-    {
-        switch (tokens[i])
-        {
+    for (i = 0; i < 9; i++) {
+        switch (tokens[i]) {
             case '-':
                 tokenvalues[i] = 0;
                 break;
@@ -103,25 +100,21 @@ GameEngine::isOver()
 
     char returnval = 'n';       // code letter for "N"o, it's not over.
     // check for 3 in a row
-    for (i = 0; i < 8; i++)
-    {
+    for (i = 0; i < 8; i++) {
         // note: check for previously declared winner first
         // to avoid 2 winners at the same time..
-        if ((rowvalues[i] == -3) && (returnval == 'n'))
-        {
+        if ((rowvalues[i] == -3) && (returnval == 'n')) {
             // 3 X's in a "row"
             returnval = 'x';    // code letter for "X" wins.
         }
-        if ((rowvalues[i] == 3) && (returnval == 'n'))
-        {
+        if ((rowvalues[i] == 3) && (returnval == 'n')) {
             // 3 O's in a "row"
             returnval = 'o';    // code letter for "O" wins.
         }
     }
     // check if board full
     bool full = true;
-    for (i = 0; i < 9; i++)
-    {
+    for (i = 0; i < 9; i++) {
         if (tokenvalues[i] == 0)
             full = false;
     }
@@ -162,9 +155,7 @@ GameEngine::tokenstring()
     QString allSquares;
     int i;
     for(i = 0; i < 9; i++)
-    {
         allSquares += tokens[i];
-    }
     return allSquares;
 }
 
