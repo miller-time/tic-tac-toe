@@ -177,8 +177,8 @@ GameEngine::drawn()
     int i, j;
     bool xflag, oflag;
     for (i = 0; i < 8; i++) {
-	xflag = 0;
-	oflag = 0;
+	xflag = false;
+	oflag = false;
 	for (j = 0; j < 3; j++) {
 	    if (tokens[lines[i][j]] == 'X')
 		xflag = true;
