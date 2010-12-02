@@ -160,7 +160,7 @@ GameEngine::tokenstring()
 }
 
 // Following code generously contributed by Bart Massey
-int
+bool
 GameEngine::drawn()
 {
     int lines[8][3] = {
@@ -174,18 +174,19 @@ GameEngine::drawn()
         {2, 4, 6}
     };
 
-    int i, j, xflag, oflag;
+    int i, j;
+    bool xflag, oflag;
     for (i = 0; i < 8; i++) {
 	xflag = 0;
 	oflag = 0;
 	for (j = 0; j < 3; j++) {
 	    if (tokens[lines[i][j]] == 'X')
-		xflag = 1;
+		xflag = true;
 	    else if(tokens[lines[i][j]] == 'O')
-		oflag = 1;
+		oflag = true;
 	}
         if (!xflag || !oflag)
-	    return 0;
+	    return false;
     }
-    return 1;
+    return true;
 }
