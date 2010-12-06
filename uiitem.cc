@@ -3,10 +3,17 @@
 // COPYING or visit
 // http://opensource.org/licenses/mit-license.php
 
+// uiitem.cc
+// UiItem's implementation.
 
 #include "uiitem.hh"
 #include <QDebug>
 
+// Probably the craziest constructor ever.
+// Since this class has an id system, upon construction its fate is decided, and
+// its path is chosen. If it was destined to just be the arrow next to the turn
+// indicator, then it'll just load its image and sit there. Each of the different
+// cases is a different ui item that is loaded.
 UiItem::UiItem(char identifier, GameEngine *eng) : id (identifier), engine (eng)
 {
     switch(identifier) {
@@ -47,12 +54,19 @@ UiItem::UiItem(char identifier, GameEngine *eng) : id (identifier), engine (eng)
     }
 }
 
+// 1st requirement for creating custom QGraphicsItem.
+// Describes a rectangular shape around the object
 QRectF
 UiItem::boundingRect() const
 {
     return QRectF(0,0,xSize,ySize);
 }
 
+// 2nd requirement. This is what is drawn on the screen.
+// Each type of item has a different filename. Normally they will just use
+// the drawPixmap function to load that image. Notice that the selection
+// buttons and turn indicator change constantly so re-painting the correct
+// image is how that is done.
 void
 UiItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
@@ -74,6 +88,8 @@ UiItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
     painter->drawPixmap(0,0,token);
 }
 
+// 3rd requirement. Not sure what the difference is between
+// this and boundingRect
 QPainterPath
 UiItem::shape () const
 {
@@ -82,6 +98,11 @@ UiItem::shape () const
     return path;
 }
 
+// When Ui Items get clicked on different things can happen. The only
+// interesting ones are the selection buttons and the cool little exit button.
+// The exit button uses the simple clicked signal, the selection buttons
+// have to tell the board what got clicked. Note that they also change blue
+// and repaint themselves.
 void
 UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
@@ -104,6 +125,7 @@ UiItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
 }
 
+// The board has asked for a repaint.
 void
 UiItem::needToUpdate()
 {

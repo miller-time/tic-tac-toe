@@ -3,6 +3,8 @@
 // COPYING or visit
 // http://opensource.org/licenses/mit-license.php
 
+// gamegrid.cc
+// GameGrid's implementation
 
 #include <QGraphicsScene>
 #include <QPainter>
@@ -15,12 +17,16 @@ GameGrid::GameGrid()
 {
 }
 
+// 1st requirement for creating custom QGraphicsItem.
+// Describes a rectangular shape around the object
 QRectF
 GameGrid::boundingRect() const
 {
     return QRectF(0,0,300,300);
 }
 
+// 2nd requirement. This is what is drawn on the screen.
+// The grid just needs 4 lines.
 void
 GameGrid::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
@@ -36,6 +42,8 @@ GameGrid::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 
 }
 
+// 3rd requirement. Not sure what the difference is between
+// this and boundingRect
 QPainterPath
 GameGrid::shape () const
 {

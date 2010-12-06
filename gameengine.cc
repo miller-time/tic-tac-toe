@@ -3,9 +3,13 @@
 // COPYING or visit
 // http://opensource.org/licenses/mit-license.php
 
+// gameengine.cc
+// GameEngine implementation
 
 #include "gameengine.hh"
 
+// Need to initialize. X's turn first, nothing selected,
+// and all squares blank.
 GameEngine::GameEngine():whoseTurn('X'),selected(' ')
 {
     int i;
@@ -13,6 +17,9 @@ GameEngine::GameEngine():whoseTurn('X'),selected(' ')
         tokens[i] = '-';
 }
 
+// count the X's and O's on the board. If there are more X's
+// it is O's turn. Vice versa. It should be noted that when
+// this function is called, whoseTurn does not always change.
 void
 GameEngine::changeTurn()
 {
@@ -43,6 +50,11 @@ GameEngine::changeSelect(char toWhat)
     selected = toWhat;
 }
 
+// As the name suggests, checking various end-game states.
+//  -By assinging positive or negative numbers to spots in
+//   the array can check if there is a '-3' or '3' anywhere.
+//  -If the board is full it's obviously over.
+//  -Use Bart's awesome drawn function to check if win is impossible.
 char
 GameEngine::isOver()
 {
@@ -133,12 +145,15 @@ GameEngine::whoseTurnIsIt()
     return whoseTurn;
 }
 
+// Simple API function for allowing different objects an
+// easy way to update the board. t is for token, l is for location.
 void
 GameEngine::update(char t, int l)
 {
     tokens[l - 1] = t;
 }
 
+// Return to initial game state.
 void
 GameEngine::reset()
 {
@@ -149,6 +164,8 @@ GameEngine::reset()
     selected = ' ';
 }
 
+// Mainly for debugging. Could be used for logging games to a file.
+// Converts the array of values to a string.
 QString
 GameEngine::tokenstring()
 {

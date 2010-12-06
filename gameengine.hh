@@ -3,6 +3,11 @@
 // COPYING or visit
 // http://opensource.org/licenses/mit-license.php
 
+// gameengine.hh
+// GameEngine is a class designed to handle the behind the scenes work of
+// a Tic Tac Toe game. It's really a central location for the game state.
+// The current turn, the state of each square on the board, and whether
+// or not the game is over, are all determined by this class.
 
 #ifndef _WF_GAMEENGINE_H
 #define _WF_GAMEENGINE_H
@@ -24,8 +29,8 @@ public:
     QString tokenstring();
 private:
     bool drawn();
-    char whoseTurn;
-    char selected;
-    char tokens[9];
+    char whoseTurn;         // keep track of whose turn it is
+    char selected;          // keep track of what piece is selected
+    char tokens[9];         // the state of each square on the board
 };
 #endif

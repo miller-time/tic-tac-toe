@@ -3,6 +3,11 @@
 // COPYING or visit
 // http://opensource.org/licenses/mit-license.php
 
+// uiitem.hh
+// UiItem is a class that has been slightly generalized. I had already created
+// the GameGrid and GameSquare class, as QGraphicsItem objects, and had multiple
+// other objects that needed to be added to the scene. This class handles the
+// rest using an id system to differentiate between different types of ui items.
 
 #ifndef _WF_UIITEM_H
 #define _WF_UIITEM_H
@@ -26,16 +31,16 @@ public:
                QWidget *);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
 public slots:
-    void needToUpdate();
+    void needToUpdate();            // the ui item needs to run update()
 signals:
-    void clicked();
-    void selectChanged(char);
+    void clicked();                 // tell the board it got clicked
+    void selectChanged(char);       // fancier version of clicked()
 private:
-    char id;
-    int xSize;
-    int ySize;
-    QString imageFile;
-    GameEngine *engine;
+    char id;                        // what type of ui item this is
+    int xSize;                      // width of image used for this item
+    int ySize;                      // height
+    QString imageFile;              // filename for the image
+    GameEngine *engine;             // direct contact to the engine
 };
 
 #endif // UIITEM_H

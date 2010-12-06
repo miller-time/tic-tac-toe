@@ -3,6 +3,11 @@
 // COPYING or visit
 // http://opensource.org/licenses/mit-license.php
 
+// tictactoe.hh
+// TicTacController is a class that is in charge of everything.
+// It has the entire scene instantiated, along with the behind the scenes
+// game engine, and uses communication back and forth with both to keep
+// everything up-to-date.
 
 #ifndef _WF_TICTACCONTROLLER_H
 #define _WF_TICTACCONTROLLER_H
@@ -25,12 +30,10 @@ public slots:
     void exitProgram();
     void onSelectChange(char);
 signals:
-    void updateUI();
+    void updateUI();        // update certain controls in the main window
 private:
-    GameGrid *grid;
-    QGraphicsScene scene;
-    GameEngine engine;
-    char current_selection;
+    QGraphicsScene scene;   // the shinies
+    GameEngine engine;      // behind the scenes
 };
 
 #endif // TICTACTOE_H

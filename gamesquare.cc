@@ -18,12 +18,16 @@ GameSquare::GameSquare(char token, int loc, GameEngine *eng)
 {
 }
 
+// 1st requirement for creating custom QGraphicsItem.
+// Describes a rectangular shape around the object
 QRectF
 GameSquare::boundingRect() const
 {
     return QRectF(0,0,100,100);
 }
 
+// 2nd requirement. This is what is drawn on the screen.
+// The squares draw something different depending on what letter they represent.
 void
 GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
@@ -38,6 +42,8 @@ GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *
     painter->drawPixmap(0,0,token);
 }
 
+// 3rd requirement. Not sure what the difference is between
+// this and boundingRect
 QPainterPath
 GameSquare::shape () const
 {
@@ -46,6 +52,10 @@ GameSquare::shape () const
     return path;
 }
 
+// Very handy to have direct communication with the engine.
+// Once the ui item that selects a piece has told the engine so,
+// and this square is clicked on, it checks with the engine to see
+// what was selected.
 void
 GameSquare::changeToken()
 {
@@ -65,6 +75,8 @@ GameSquare::getLoc()
     return location;
 }
 
+// When a square gets clicked on, it uses changeToken to update
+// and tells the board that stuff "might" have changed.
 void
 GameSquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
