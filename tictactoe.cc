@@ -3,6 +3,8 @@
 // COPYING or visit
 // http://opensource.org/licenses/mit-license.php
 
+// tictactoe.cc
+// TicTacController's implementation.
 
 #include <QtGui>
 #include <QMessageBox>
@@ -24,11 +26,14 @@ TicTacController::TicTacController(QWidget *parent)
     restart();
 }
 
+// This enormous method is almost everything that would normally be included
+// in the constructor for an all-encompassing parent widget. However, when a
+// game ends, I use the provided QGraphicsScene::clear() function to remove
+// all QGraphicsItem objects. So reconstructing fresh new ones doesn't need to
+// be written out twice.
 void
 TicTacController::restart()
 {
-    // not selecting anything initially
-    current_selection = ' ';
     // clear background gameboard
     engine.reset();
     // remove anything added to scene
@@ -74,12 +79,16 @@ TicTacController::restart()
     connect(quit, SIGNAL(clicked()), this, SLOT(exitProgram()));
 }
 
+// In main, need to be able to load the scene into the graphics view
 QGraphicsScene *
 TicTacController::getScene()
 {
     return &scene;
 }
 
+// A square has just told us that something "might" have changed.
+// It's time to update the engine, see whose turn it should be,
+// refresh the game controls, and see if the game is over.
 void
 TicTacController::onTokenChange(GameSquare *square)
 {
@@ -114,18 +123,24 @@ TicTacController::onTokenChange(GameSquare *square)
     }
 }
 
+// A specific signal has gone off letting the class in charge know
+// that a player has selected either X or O.
 void
 TicTacController::onSelectChange(char toWhat)
 {
     engine.changeSelect(toWhat);
 }
 
+// Had to make it a slot to connect it to my exit button
 void
 TicTacController::exitProgram()
 {
     exit(0);
 }
 
+// Wanted to simplify adding the squares to the board
+// Can iterate and just add squares 1-9 and this utility function
+// does the hard part of getting it in the right spot.
 GameSquare *
 TicTacController::addToken(char token, int location)
 {
